@@ -18,20 +18,25 @@ Built using **Jetpack Compose, Clean Architecture, MVVM, Flow, Room DB, Retrofit
 ✔ **Handles device rotation and maintains UI state**
 ✔ **Use Git for multiple commits**
 
+<div align="center">
+  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 One.jpg" width="230px" />  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 Two.jpg" width="230px" /><br>
+  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 Three.jpg" width="230px" /> <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 Four.jpg" width="230px" />  
+</div>
+
 ---
 
 ## 🛠 **Tech Stack & Libraries**
 
-| Component                   | Technology Used                                                                          |
-|-----------------------------|------------------------------------------------------------------------------------------|
-| **Programming Language**    | ![Kotlin](https://img.shields.io/badge/Kotlin-2.1.0-blue?style=flat)                     |
-| **UI Framework**            | ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-2025.03.00-blue)       |
-| **Architecture**            | Clean Architecture + MVVM + Use Cases                                                    |
-| **State Management**        | Flow, StateFlow, ViewModel                                                               |
-| **Dependency Injection**    | [Hilt] (https://img.shields.io/badge/Hilt-2.55-blue)                                     |                                                                         |
-| **Networking**              | [Retrofit + OkHttp](https://img.shields.io/badge/Retrofit%20OkHttp-2.11.0%204.12.0-blue) |                                                               |
-| **Local Storage**           | [Room Database](https://img.shields.io/badge/Room-2.6.1-blue)                            |                           |                                                                       |
-| **Asynchronous Processing** | Coroutines + Flow                                                                        |
+| Component                   | Technology Used                                                                                      |
+|-----------------------------|------------------------------------------------------------------------------------------------------|
+| **Programming Language**    | ![Kotlin](https://img.shields.io/badge/Kotlin-2.1.0-blue?style=flat)                                 |
+| **UI Framework**            | ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-2025.03.00-blue)                   |
+| **Architecture**            | Clean Architecture + MVVM + Use Cases                                                                |
+| **State Management**        | Flow, StateFlow, ViewModel                                                                           |
+| **Dependency Injection**    | ![Hilt](https://img.shields.io/badge/Hilt-2.55-blue?style=flat)                                      |                                                                         |
+| **Networking**              | ![Retrofit + OkHttp](https://img.shields.io/badge/Retrofit%20OkHttp-2.11.0%204.12.0-blue?style=flat) |                                                               |
+| **Local Storage**           | ![Room Database](https://img.shields.io/badge/Room-2.6.1-blue?style=flat)                            |                           |                                                                       |
+| **Asynchronous Processing** | Coroutines + Flow                                                                                    |
 
 ---
 

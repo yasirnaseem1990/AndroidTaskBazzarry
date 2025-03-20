@@ -84,15 +84,15 @@ class WordsViewModel @Inject constructor(
 
     fun onSortClicked() {
         _uiState.update { uiState ->
-            uiState.copy(isAscending = !_uiState.value.isAscending)
-        }
-
-        _uiState.update { uiState ->
             val newSortOrder = !uiState.isAscending
             val sortedWords = sortWords(uiState.words, newSortOrder)
-            uiState.copy(isAscending = newSortOrder, words = sortedWords)
+
+            uiState.copy(
+                isAscending = newSortOrder,
+                words = sortedWords
+            )
         }
-        savedStateHandle["ui_state"] = _uiState.value
+        savedStateHandle["ui_state"] = _uiState.value //
     }
 
     private fun sortWords(words: Map<String, Int>, ascending: Boolean): Map<String, Int> {
