@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.kapt) apply false
     id("com.google.devtools.ksp") version "2.1.0-1.0.29" apply false
+    alias(libs.plugins.hilt) apply false // Ensure this is present
 }

@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    id("kotlin-kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -31,14 +32,22 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    packaging {
+        resources {
+            excludes += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {
 
+    // DI
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    kapt(libs.hilt.compiler)
+    // OkHttp
     implementation(libs.bundles.okhttp)
+    // Retrofit
     implementation(libs.bundles.retrofit)
+    // Coroutines
     implementation(libs.bundles.kotlinx.coroutines)
-    implementation(libs.jsoup)
 }

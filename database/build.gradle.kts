@@ -1,13 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    id("kotlin-kapt")
     alias(libs.plugins.kotlin.ksp)
 }
 
 android {
     namespace = "com.yasirnaseem.androidtask.database"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -32,20 +32,25 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    packaging {
+        resources {
+            excludes += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {
 
     // Kotlin Core
     implementation(libs.androidx.core.ktx)
-
     // DI
-    implementation(libs.bundles.hilt)
-
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
     // Coroutines
     implementation(libs.bundles.kotlinx.coroutines)
-
     // Room
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
+
+    implementation(project(":network"))
 }
