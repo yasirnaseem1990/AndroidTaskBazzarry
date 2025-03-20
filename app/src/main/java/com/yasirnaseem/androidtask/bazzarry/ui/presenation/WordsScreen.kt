@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
@@ -23,9 +25,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -36,6 +44,8 @@ import com.yasirnaseem.androidtask.bazzarry.ui.presenation.viewmodel.WordsViewMo
 @Composable
 fun WordsScreen(wordsViewModel: WordsViewModel = hiltViewModel()) {
     val uiState by wordsViewModel.uiState.collectAsStateWithLifecycle()
+    var searchQuery by rememberSaveable { mutableStateOf(uiState.searchText) }
+    val focusManager = LocalFocusManager.current
 
     Scaffold(
         topBar = {
@@ -62,36 +72,53 @@ fun WordsScreen(wordsViewModel: WordsViewModel = hiltViewModel()) {
         ) {
             OutlinedTextField(
                 value = uiState.searchText,
-                onValueChange = { wordsViewModel.onSearchTextChange(it) },
+                onValueChange = {
+                    searchQuery = it
+                    wordsViewModel.onSearchTextChange(it)
+                },
                 label = { Text(text = "Search") },
                 modifier = Modifier.fillMaxWidth(),
                 leadingIcon = {
                     Icon(Icons.Filled.Search, contentDescription = "Search")
-                }
+                },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        focusManager.clearFocus()
+                    }
+                )
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            if (uiState.isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
-            } else if (uiState.error != null) {
-                Text(text = "Error: ${uiState.error}", color = MaterialTheme.colorScheme.error)
-            } else {
-                val filteredWords = uiState.words.filterKeys {
-                    it.contains(uiState.searchText, ignoreCase = true)
-                }
-                val sortedWords = if (uiState.isAscending) {
-                    filteredWords.toList().sortedBy { (_, value) -> value }.toMap()
-                } else {
-                    filteredWords.toList().sortedByDescending { (_, value) -> value }.toMap()
+            when {
+                uiState.isLoading -> {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
                 }
 
-                if (sortedWords.isEmpty()) {
-                    Text(text = "No matching words found.")
-                } else {
-                    LazyColumn {
-                        items(sortedWords.toList()) { (word, count) ->
-                            WordItem(word = word, count = count)
+                uiState.error != null -> {
+                    Text(
+                        text = "Error: ${uiState.error}",
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+
+                else -> {
+                    val filteredWords = uiState.words.filterKeys {
+                        it.contains(searchQuery, ignoreCase = true)
+                    }
+
+                    if (filteredWords.isEmpty()) {
+                        Text(text = "No matching words found.")
+                    } else {
+                        LazyColumn {
+                            items(filteredWords.toList()) { (word, count) ->
+                                WordItem(word = word, count = count)
+                            }
                         }
                     }
                 }

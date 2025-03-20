@@ -4,6 +4,7 @@ import com.yasirnaseem.androidtask.bazzarry.data.HtmlParser
 import com.yasirnaseem.androidtask.bazzarry.data.RemoteWordsDataSource
 import com.yasirnaseem.androidtask.bazzarry.data.WordsDataSource
 import com.yasirnaseem.androidtask.bazzarry.domain.WordsRepository
+import com.yasirnaseem.androidtask.database.data.LocalWordsDataSource
 import com.yasirnaseem.androidtask.network.data.WordApiService
 import com.yasirnaseem.androidtask.network.data.di.NetworkHandler
 import dagger.Module
@@ -18,8 +19,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideWordsRepository(remoteWordsDataSource: WordsDataSource) =
-        WordsRepository(remoteWordsDataSource)
+    fun provideWordsRepository(
+        remoteWordsDataSource: WordsDataSource,
+        localWordsDataSource: LocalWordsDataSource
+    ) =
+        WordsRepository(
+            remoteWordsDataSource = remoteWordsDataSource,
+            localWordsDataSource = localWordsDataSource
+        )
 
     @Provides
     @Singleton

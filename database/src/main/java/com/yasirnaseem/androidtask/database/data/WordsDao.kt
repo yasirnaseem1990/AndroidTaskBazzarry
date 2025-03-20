@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WordsDao {
     @Query("SELECT * FROM words")
-    suspend fun getAllWords(): List<WordEntity>
+    fun getAllWords(): Flow<List<WordEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWords(words: List<WordEntity>)
