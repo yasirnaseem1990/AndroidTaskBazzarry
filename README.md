@@ -19,8 +19,10 @@ Built using **Jetpack Compose, Clean Architecture, MVVM, Flow, Room DB, Retrofit
 ✔ **Use Git for multiple commits**
 
 <div align="center">
-  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 One.jpg" width="230px" />  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 Two.jpg" width="230px" /><br>
-  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 Three.jpg" width="230px" /> <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzary/blob/master/screenshots/Screenshot 2025-03-20 Four.jpg" width="230px" />  
+  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzarry/blob/main/screenshots/Screenshot%202025-03-20%20One.png" width="230px" /> 
+  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzarry/blob/main/screenshots/Screenshot%202025-03-20%20Two.png" width="230px" /><br>
+  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzarry/blob/main/screenshots/Screenshot%202025-03-20%20Three.png" width="230px" /> 
+  <img src="https://github.com/yasirnaseem1990/AndroidTaskBazzarry/blob/main/screenshots/Screenshot%202025-03-20%20Four.png" width="230px" />  
 </div>
 
 ---
